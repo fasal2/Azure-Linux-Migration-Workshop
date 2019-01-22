@@ -36,12 +36,12 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-#User=student
+#User=demouser
 
 # Clean any existing files in /tmp/.X11-unix environment
 ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/sbin/runuser -l student -c "/usr/bin/vncserver %i -geometry 1280x720 -depth 24"
-PIDFile=/home/student/.vnc/%H%i.pid
+ExecStart=/sbin/runuser -l demouser -c "/usr/bin/vncserver %i -geometry 1280x720 -depth 24"
+PIDFile=/home/demouser/.vnc/%H%i.pid
 ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
 
 [Install]
